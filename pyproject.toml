@@ -122,7 +122,7 @@ addopts = [
     "--cov=numpyro_forecast",
     "--cov-report=term-missing",
     "--cov-report=xml",
-    "--no-cov-on-fail",
+    "--cov-fail-under=95",
     "--durations=50",
     "--color=yes",
 ]
