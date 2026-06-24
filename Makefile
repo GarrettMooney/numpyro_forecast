@@ -1,4 +1,4 @@
-.PHONY: setup activate tests prek docs docs-preview
+.PHONY: setup activate tests notebooks prek docs docs-preview
 
 setup:
 	uv sync --all-extras
@@ -8,6 +8,12 @@ activate:
 
 tests:
 	uv run pytest
+
+# Execute the example notebooks end to end (downloads BART, re-runs inference)
+# so they cannot silently rot. This is distinct from `make docs`, which renders
+# them from stored outputs without re-running.
+notebooks:
+	uv run pytest --nbmake docs/examples/
 
 prek:
 	uv run prek run --all-files
